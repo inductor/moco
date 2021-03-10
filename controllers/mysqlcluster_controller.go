@@ -1221,6 +1221,10 @@ func (r *MySQLClusterReconciler) makeErrLogAgentContainer(cluster *mocov1alpha1.
 				ReadOnly:  true,
 				SubPath:   moco.FluentBitConfigName,
 			},
+			{
+				MountPath: moco.VarLogPath,
+				Name:      varLogVolumeName,
+			},
 		},
 	}
 
@@ -1243,6 +1247,10 @@ func (r *MySQLClusterReconciler) makeSlowQueryLogAgentContainer(cluster *mocov1a
 				Name:      slowQueryLogAgentConfigVolumeName,
 				ReadOnly:  true,
 				SubPath:   moco.FluentBitConfigName,
+			},
+			{
+				MountPath: moco.VarLogPath,
+				Name:      varLogVolumeName,
 			},
 		},
 	}
